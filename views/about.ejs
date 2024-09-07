@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+       
+        .button-container {
+            display: flex;
+            justify-content: center; 
+            margin-top: 20px; 
+        }
+
+        .button {
+            text-decoration: underline; 
+            color: #6a0dad; 
+            margin: 0 15px;
+            cursor: pointer; 
+            transition: color 0.3s; 
+        }
+
+        .button.active {
+            color: rgb(228, 173, 209);
+        }
+
+        .image-gallery {
+            display: flex; 
+            justify-content: center; 
+            margin-top: 20px; 
+            display: none; 
+        }
+
+        .service-image {
+            width: 150px; 
+            height: auto;
+            margin: 0 10px; 
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Salon Logo" class="logo-image"> 
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+
+       
+        <div class="button-container">
+            <span class="button" onclick="showImages('hair')">Hair</span>
+            <span class="button" onclick="showImages('nails')">Nails</span>
+            <span class="button" onclick="showImages('makeup')">Makeup</span>
+            <span class="button" onclick="showImages('eyebrows')">Eyebrows</span>
+            <span class="button" onclick="showImages('lashes')">Lashes</span>
+        </div>
+
+       
+        <div id="image-gallery" class="image-gallery">
+            <img src="Hair1.jpg" alt="Hair Service 1" class="service-image">
+            <img src="Hair2.jpg" alt="Hair Service 2" class="service-image">
+            <img src="Hair3.jpg" alt="Hair Service 3" class="service-image">
+            <img src="Hair4.jpg" alt="Hair Service 4" class="service-image">
+            <img src="Hair5.jpg" alt="Hair Service 5" class="service-image">
+            <img src="Hair6.jpg" alt="Hair Service 6" class="service-image">
+            <img src="nails1.jpg" alt="Nails Service 1" class="service-image">
+            <img src="nails2.jpg" alt="Nails Service 2" class="service-image">
+            <img src="nails3.jpg" alt="Nails Service 3" class="service-image">
+            <img src="nails4.jpg" alt="Nails Service 4" class="service-image">
+            <img src="nails5.jpg" alt="Nails Service 5" class="service-image">
+            <img src="nail6.jpg" alt="Nails Service 6" class="service-image">
+            <img src="makeup1.jpg" alt="Makeup Service 1" class="service-image">
+            <img src="makeup2.jpg" alt="Makeup Service 2" class="service-image">
+            <img src="makeup3.jpg" alt="Makeup Service 3" class="service-image">
+            <img src="makeup4.jpg" alt="Makeup Service 4" class="service-image">
+            <img src="makeup5.jpg" alt="Makeup Service 5" class="service-image">
+            <img src="makeup6.jpg" alt="Makeup Service 6" class="service-image">
+            <img src="eyebrows1.jpg" alt="Eyebrows Service 1" class="service-image">
+            <img src="eyebrows2.jpg" alt="Eyebrows Service 2" class="service-image">
+            <img src="eyebrows3.jpg" alt="Eyebrows Service 3" class="service-image">
+            <img src="eyebrows4.jpg" alt="Eyebrows Service 4" class="service-image">
+            <img src="eyelashes1.jpg" alt="Lashes Service 1" class="service-image">
+            <img src="eyelashes2.jpg" alt="Lashes Service 2" class="service-image">
+            <img src="eyelashes3.jpg" alt="Lashes Service 3" class="service-image">
+            <img src="eyelashes4.jpg" alt="Lashes Service 4" class="service-image">
+        </div>
+    </main>
+    <script>
+      
+        function showImages(service) {
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            
+            const activeButton = Array.from(buttons).find(button => button.textContent.toLowerCase() === service);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            const gallery = document.getElementById('image-gallery');
+            const images = gallery.getElementsByTagName('img');
+
+            for (let img of images) {
+                img.style.display = 'none'; 
+                if (img.alt.toLowerCase().includes(service)) {
+                    img.style.display = 'block'; 
+                }
+            }
+
+            gallery.style.display = 'flex'; 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showImages('hair'); 
+        });
+    </script>
+</body>
+</html>
